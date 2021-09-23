@@ -33,24 +33,21 @@ import com.google.gson.reflect.TypeToken;
 public class AltiriaClient {
 	
     private Gson gson;
+    private String login;
+    private String passwd;
+    private boolean debug = false;
 	
-	private String login;
-	private String passwd;
-	private boolean debug = false;
-	
-	// connection timeout values are defined here
-	private int connectionTimeout = 3000;
-	private final static int MAX_CONNECTION_TIMEOUT = 10000;
-	private final static int MIN_CONNECTION_TIMEOUT = 1000;
-	
-	// response timeout values are defined here
-	private int timeout = 10000;
-	private final static int MAX_TIMEOUT = 30000;
-	private final static int MIN_TIMEOUT = 1000;
+    // connection timeout values are defined here
+    private int connectionTimeout = 3000;
+    private final static int MAX_CONNECTION_TIMEOUT = 10000;
+    private final static int MIN_CONNECTION_TIMEOUT = 1000;
+    // response timeout values are defined here
+    private int timeout = 10000;
+    private final static int MAX_TIMEOUT = 30000;
+    private final static int MIN_TIMEOUT = 1000;
 	
     // API URL
-	private String urlBase = "http://127.0.0.1:8080/apirest/ws";
-    //private String urlBase = "https://www.altiria.net:8443/apirest/ws";
+    private String urlBase = "https://www.altiria.net:8443/apirest/ws";
     
     // Library name/version
     private String source = "lib-java-maven-1_0";
