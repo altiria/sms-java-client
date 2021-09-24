@@ -7,6 +7,8 @@
 *.class
 /bin/
 /lib/
+/src/test/java/com/altiria/app/TestAltiriaSmsJavaClientSendSmsConnection.java
+/src/test/java/com/altiria/app/TestAltiriaSmsJavaClientGetCreditConnection.java
 
 # Log file
 /log/
