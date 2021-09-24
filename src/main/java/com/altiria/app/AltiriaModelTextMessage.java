@@ -1,157 +1,157 @@
 package com.altiria.app;
 
 public class AltiriaModelTextMessage {
-	
-    private String destination;
-    private String message;
-    private String senderId;
-    private boolean ack = false;
-    private String idAck;
-    private boolean concat = false;
-    private boolean certDelivery = false;
-    private String encoding;
-    
-    /**
-     * Simple constructor.
-     * @param destination phone destination number
-     * @param message SMS text
-     */
-    public AltiriaModelTextMessage(String destination, String message) {
-    	this.destination = destination;
-    	this.message = message;
-    }
 
-    /**
-     * This constructor includes the sender id parameter.
-     * @param destination destination phone destination number
-     * @param message SMS text
-     * @param senderId sender id
-     */
-    public AltiriaModelTextMessage(String destination, String message, String senderId) {
-    	this.destination = destination;
-    	this.message = message;
-    	this.senderId = senderId;
-    }
+  private String destination;
+  private String message;
+  private String senderId;
+  private boolean ack = false;
+  private String idAck;
+  private boolean concat = false;
+  private boolean certDelivery = false;
+  private String encoding;
 
-	/**
-	 * @return the destination
-	 */
-	public String getDestination() {
-		return destination;
-	}
+  /**
+   * Simple constructor.
+   * @param destination phone destination number
+   * @param message SMS text
+   */
+  public AltiriaModelTextMessage(String destination, String message) {
+    this.destination = destination;
+    this.message = message;
+  }
 
-	/**
-	 * @param destination the destination to set
-	 */
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
+  /**
+   * This constructor includes the sender id parameter.
+   * @param destination destination phone destination number
+   * @param message SMS text
+   * @param senderId sender id
+   */
+  public AltiriaModelTextMessage(String destination, String message, String senderId) {
+    this.destination = destination;
+    this.message = message;
+    this.senderId = senderId;
+  }
 
-	/**
-	 * @return the message
-	 */
-	public String getMessage() {
-		return message;
-	}
+  /**
+   * @return the destination
+   */
+  public String getDestination() {
+    return destination;
+  }
 
-	/**
-	 * @param message the message to set
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
+  /**
+   * @param destination the destination to set
+   */
+  public void setDestination(String destination) {
+    this.destination = destination;
+  }
 
-	/**
-	 * @return the senderId
-	 */
-	public String getSenderId() {
-		return senderId;
-	}
+  /**
+   * @return the message
+   */
+  public String getMessage() {
+    return message;
+  }
 
-	/**
-	 * @param senderId the senderId to set
-	 */
-	public void setSenderId(String senderId) {
-		this.senderId = senderId;
-	}
+  /**
+   * @param message the message to set
+   */
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-	/**
-	 * @return the ack
-	 */
-	public boolean isAck() {
-		return ack;
-	}
+  /**
+   * @return the senderId
+   */
+  public String getSenderId() {
+    return senderId;
+  }
 
-	/**
-	 * @param ack the ack to set
-	 */
-	public void setAck(boolean ack) {
-		this.ack = ack;
-	}
+  /**
+   * @param senderId the senderId to set
+   */
+  public void setSenderId(String senderId) {
+    this.senderId = senderId;
+  }
 
-	/**
-	 * @return the idAck
-	 */
-	public String getIdAck() {
-		return idAck;
-	}
+  /**
+   * @return the ack
+   */
+  public boolean isAck() {
+    return ack;
+  }
 
-	/**
-	 * @param idAck the idAck to set
-	 */
-	public void setIdAck(String idAck) {
-		this.idAck = idAck;
-	}
+  /**
+   * @param ack the ack to set
+   */
+  public void setAck(boolean ack) {
+    this.ack = ack;
+  }
 
-	/**
-	 * @return the concat
-	 */
-	public boolean isConcat() {
-		return concat;
-	}
+  /**
+   * @return the idAck
+   */
+  public String getIdAck() {
+    return idAck;
+  }
 
-	/**
-	 * @param concat the concat to set
-	 */
-	public void setConcat(boolean concat) {
-		this.concat = concat;
-	}
+  /**
+   * @param idAck the idAck to set
+   */
+  public void setIdAck(String idAck) {
+    this.idAck = idAck;
+  }
 
-	/**
-	 * @return the certDelivery
-	 */
-	public boolean isCertDelivery() {
-		return certDelivery;
-	}
+  /**
+   * @return the concat
+   */
+  public boolean isConcat() {
+    return concat;
+  }
 
-	/**
-	 * @param certDelivery the certDelivery to set
-	 */
-	public void setCertDelivery(boolean certDelivery) {
-		this.certDelivery = certDelivery;
-	}
+  /**
+   * @param concat the concat to set
+   */
+  public void setConcat(boolean concat) {
+    this.concat = concat;
+  }
 
-	/**
-	 * @return the encoding
-	 */
-	public String getEncoding() {
-		return encoding;
-	}
+  /**
+   * @return the certDelivery
+   */
+  public boolean isCertDelivery() {
+    return certDelivery;
+  }
 
-	/**
-	 * @param encoding the encoding to set
-	 */
-	public void setEncoding(String encoding) {
-		this.encoding = encoding;
-	}
+  /**
+   * @param certDelivery the certDelivery to set
+   */
+  public void setCertDelivery(boolean certDelivery) {
+    this.certDelivery = certDelivery;
+  }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "AltiriaModelTextMessage [destination=" + destination + ", message=" + message + ", senderId=" + senderId
-				+ ", ack=" + ack + ", idAck=" + idAck + ", concat=" + concat + ", certDelivery=" + certDelivery
-				+ ", encoding=" + encoding + "]";
-	}
+  /**
+   * @return the encoding
+   */
+  public String getEncoding() {
+    return encoding;
+  }
+
+  /**
+   * @param encoding the encoding to set
+   */
+  public void setEncoding(String encoding) {
+    this.encoding = encoding;
+  }
+
+  /* (non-Javadoc)
+   * @see java.lang.Object#toString()
+   */
+  @Override
+  public String toString() {
+    return "AltiriaModelTextMessage [destination=" + destination + ", message=" + message + ", senderId=" + senderId +
+      ", ack=" + ack + ", idAck=" + idAck + ", concat=" + concat + ", certDelivery=" + certDelivery +
+      ", encoding=" + encoding + "]";
+  }
 }
