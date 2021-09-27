@@ -17,6 +17,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 // Run all suites (without connection suites)
 // Running this test suites supposes a consumption of credits (between 3 and 5 credits).
-//SuiteClasses({TestAltiriaSmsJavaClientSendSmsHttp.class, TestAltiriaSmsJavaClientSendSmsAuth.class, TestAltiriaSmsJavaClientGetCreditHttp.class, TestAltiriaSmsJavaClientGetCreditAuth.class})
+//@SuiteClasses({TestAltiriaSmsJavaClientSendSmsHttp.class, TestAltiriaSmsJavaClientSendSmsAuth.class, TestAltiriaSmsJavaClientGetCreditHttp.class, TestAltiriaSmsJavaClientGetCreditAuth.class})
 
 public class TestAll {}
