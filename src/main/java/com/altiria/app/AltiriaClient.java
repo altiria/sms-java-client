@@ -35,7 +35,6 @@ public class AltiriaClient {
   private Gson gson;
   private String login;
   private String passwd;
-  private boolean debug = false;
 
   // connection timeout values are defined here
   private int connectionTimeout = 3000;
@@ -76,14 +75,6 @@ public class AltiriaClient {
     this.passwd = password;
     this.setTimeout(timeout);
     gson = new GsonBuilder().create();
-  }
-
-  /**
-   * Show debugging logs.
-   * @param debug if it is true, then debugging logs are shown.
-   */
-  public void setDebug(boolean debug) {
-    this.debug = debug;
   }
 
   /**
@@ -140,8 +131,7 @@ public class AltiriaClient {
    * @throws Exception
    */
   public String sendSms(AltiriaModelTextMessage textMessage) throws Exception {
-    if (debug)
-      log.debug("Altiria-sendSms CMD: " + textMessage.toString());
+    log.debug("Altiria-sendSms CMD: " + textMessage.toString());
 
     String jsonResponse = null;
     try {
@@ -151,8 +141,7 @@ public class AltiriaClient {
       JsonArray destinationsJsonArray = null;
 
       if (textMessage.getDestination() == null || textMessage.getDestination().trim().isEmpty()) {
-        if (this.debug)
-          log.error("ERROR: The destination parameter is mandatory");
+        log.error("ERROR: The destination parameter is mandatory");
         throw new AltiriaGwException("INVALID_DESTINATION", "015");
       } else {
         destinationsJsonArray = new JsonArray();
@@ -160,8 +149,7 @@ public class AltiriaClient {
       }
 
       if (textMessage.getMessage() == null || textMessage.getMessage().trim().isEmpty()) {
-        if (this.debug)
-          log.error("ERROR: The message parameter is mandatory");
+        log.error("ERROR: The message parameter is mandatory");
         throw new AltiriaGwException("EMPTY_MESSAGE", "017");
       } else
         messageJsonObject.addProperty("msg", textMessage.getMessage());
@@ -214,34 +202,28 @@ public class AltiriaClient {
         httpResponse = httpClient.execute(request);
         jsonResponse = EntityUtils.toString(httpResponse.getEntity());
 
-        if (debug) {
-          log.debug("HTTP status:" + httpResponse.getCode());
-          log.debug("HTTP body:" + jsonResponse);
-        }
+        log.debug("HTTP status:" + httpResponse.getCode());
+        log.debug("HTTP body:" + jsonResponse);
 
         LinkedTreeMap < String, Object > mapBody = gson.fromJson(jsonResponse, new TypeToken < LinkedTreeMap < String, Object >> () {}.getType());
 
         if (httpResponse.getCode() != 200) {
-          if (debug)
-            log.error("ERROR: Invalid request: " + jsonResponse);
+          log.error("ERROR: Invalid request: " + jsonResponse);
           String errorMsg = (String) mapBody.get("error");
           throw new JsonException(errorMsg);
         } else {
           String status = (String) mapBody.get("status");
           if (!status.equals("000")) {
             String errorMsg = getStatus(status);
-            if (debug)
-              log.error("ERROR: Invalid parameter. Error message: " + errorMsg + ", Status: " + status);
+            log.error("ERROR: Invalid parameter. Error message: " + errorMsg + ", Status: " + status);
             throw new AltiriaGwException(errorMsg, status);
           }
         }
       } catch (ConnectTimeoutException cte) {
-        if (debug)
-          log.error("ERROR: Connection timeout");
+        log.error("ERROR: Connection timeout");
         throw new ConnectionException("CONNECTION_TIMEOUT");
       } catch (SocketTimeoutException ste) {
-        if (debug)
-          log.error("ERROR: Response timeout");
+        log.error("ERROR: Response timeout");
         throw new ConnectionException("RESPONSE_TIMEOUT");
       } finally {
         try {
@@ -256,8 +238,7 @@ public class AltiriaClient {
     } catch (GeneralAltiriaException e) {
       throw e;
     } catch (Exception e) {
-      if (this.debug)
-        log.error("ERROR: Unexpected error: " + e.getMessage());
+      log.error("ERROR: Unexpected error", e);
       throw new AltiriaGwException("GENERAL_ERROR", "001");
     }
     return jsonResponse;
@@ -269,8 +250,7 @@ public class AltiriaClient {
    * @throws Exception
    */
   public String getCredit() throws Exception {
-    if (debug)
-      log.debug("Altiria-getCredit CMD");
+    log.debug("Altiria-getCredit CMD");
 
     String credit = null;
     try {
@@ -304,33 +284,28 @@ public class AltiriaClient {
       try {
         httpResponse = httpClient.execute(request);
         String jsonResponse = EntityUtils.toString(httpResponse.getEntity());
-        if (debug) {
-          log.debug("HTTP status:" + httpResponse.getCode());
-          log.debug("HTTP body:" + jsonResponse);
-        }
+        log.debug("HTTP status:" + httpResponse.getCode());
+        log.debug("HTTP body:" + jsonResponse);
+
         LinkedTreeMap < String, Object > mapBody = gson.fromJson(jsonResponse, new TypeToken < LinkedTreeMap < String, Object >> () {}.getType());
         if (httpResponse.getCode() != 200) {
-          if (debug)
-            log.error("ERROR: Invalid request: " + jsonResponse);
+          log.error("ERROR: Invalid request: " + jsonResponse);
           String errorMsg = (String) mapBody.get("error");
           throw new JsonException(errorMsg);
         } else {
           String status = (String) mapBody.get("status");
           if (!status.equals("000")) {
             String errorMsg = getStatus(status);
-            if (debug)
-              log.error("ERROR: Invalid parameter. Error message: " + errorMsg + ", Status: " + status);
+            log.error("ERROR: Invalid parameter. Error message: " + errorMsg + ", Status: " + status);
             throw new AltiriaGwException(errorMsg, status);
           } else
             credit = (String) mapBody.get("credit");
         }
       } catch (ConnectTimeoutException cte) {
-        if (debug)
-          log.error("ERROR: Connection timeout");
+        log.error("ERROR: Connection timeout");
         throw new ConnectionException("CONNECTION_TIMEOUT");
       } catch (SocketTimeoutException ste) {
-        if (debug)
-          log.error("ERROR: Response timeout");
+        log.error("ERROR: Response timeout");
         throw new ConnectionException("RESPONSE_TIMEOUT");
       } finally {
         try {
@@ -345,8 +320,7 @@ public class AltiriaClient {
     } catch (GeneralAltiriaException e) {
       throw e;
     } catch (Exception e) {
-      if (this.debug)
-        log.error("ERROR: Unexpected error: " + e.getMessage());
+	  log.error("ERROR: Unexpected error", e);	
       throw new AltiriaGwException("GENERAL_ERROR", "001");
     }
     return credit;

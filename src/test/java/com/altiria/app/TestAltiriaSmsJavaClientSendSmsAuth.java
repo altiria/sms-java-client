@@ -13,7 +13,7 @@ import org.junit.Test;
 public class TestAltiriaSmsJavaClientSendSmsAuth {
 
   //configurable parameters
-  public String login = "user@altiria.com";
+  public String login = "user@mydomain.com";
   public String password = "mypassword";
   //set to null if there is no sender
   public String sender = "mySender";
@@ -34,7 +34,6 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
       String message = "Lorem Ipsum is simply dummy text";
 
       AltiriaClient client = new AltiriaClient(null, password);
-      client.setDebug(debug);
       client.sendSms(destination, message);
       fail("JsonException should have been thrown");
 
@@ -57,7 +56,6 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
       String message = "Lorem Ipsum is simply dummy text";
 
       AltiriaClient client = new AltiriaClient(login, null);
-      client.setDebug(debug);
       client.sendSms(destination, message);
       fail("JsonException should have been thrown");
 
@@ -80,7 +78,6 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
       String message = "Lorem Ipsum is simply dummy text";
 
       AltiriaClient client = new AltiriaClient(login, null);
-      client.setDebug(debug);
       client.sendSms(null, message);
       fail("AltiriaGwException should have been thrown");
 
@@ -102,7 +99,6 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
 
     try {
       AltiriaClient client = new AltiriaClient(login, null);
-      client.setDebug(debug);
       client.sendSms(destination, null);
       fail("AltiriaGwException should have been thrown");
 

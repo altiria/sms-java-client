@@ -12,7 +12,7 @@ import com.altiria.app.exception.JsonException;
 public class TestAltiriaSmsJavaClientGetCreditAuth {
 
   //configurable parameters
-  public String login = "user@altiria.com";
+  public String login = "user@mydomain.com";
   public String password = "mypassword";
   public boolean debug = false;
 
@@ -28,7 +28,6 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
 
     try {
       AltiriaClient client = new AltiriaClient(null, password);
-      client.setDebug(debug);
       client.getCredit();
       fail("JsonException should have been thrown");
     } catch (JsonException je) {
@@ -48,7 +47,6 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
 
     try {
       AltiriaClient client = new AltiriaClient(login, null);
-      client.setDebug(debug);
       client.getCredit();
       fail("JsonException should have been thrown");
     } catch (JsonException je) {

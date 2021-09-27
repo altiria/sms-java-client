@@ -12,7 +12,7 @@ import com.altiria.app.exception.AltiriaGwException;
 public class TestAltiriaSmsJavaClientGetCreditHttp {
 
   //configurable parameters
-  public String login = "user@altiria.com";
+  public String login = "user@mydomain.com";
   public String password = "mypassword";
   public boolean debug = false;
 
@@ -28,7 +28,6 @@ public class TestAltiriaSmsJavaClientGetCreditHttp {
 
     try {
       AltiriaClient client = new AltiriaClient(login, password);
-      client.setDebug(debug);
       String credit = client.getCredit();
 
       //Check your credit here        
@@ -49,7 +48,6 @@ public class TestAltiriaSmsJavaClientGetCreditHttp {
 
     try {
       AltiriaClient client = new AltiriaClient("unknown", password);
-      client.setDebug(debug);
       client.getCredit();
       fail("AltiriaGwException should have been thrown");
 

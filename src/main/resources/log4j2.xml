@@ -18,6 +18,9 @@
 		<Logger name="com.altiria.app" level="debug" additivity="false">
 			<AppenderRef ref="RollingFile" />
 		</Logger>
+		<Logger name="org.apache.hc.client5" level="warn" additivity="false">
+			<AppenderRef ref="RollingFile" />
+		</Logger>
 		<Root level="trace">
 			<AppenderRef ref="RollingFile"/>
 		</Root>

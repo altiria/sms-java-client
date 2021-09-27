@@ -125,7 +125,6 @@ try {
     AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña");
     client.setConnectionTimeout(1000);
     client.setTimeout(5000);
-    client.setDebug(true);
     AltiriaModelTextMessage textMessage = new AltiriaModelTextMessage("346XXXXXXXX", "Mensaje de prueba");
 	textMessage.setSenderId("miRemitente");
 	textMessage.setAck(true);
@@ -185,7 +184,6 @@ Este ejemplo incluye los parámetros opcionales.
 ```java
 try {
     AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña", 5000);
-    client.setDebug(true);
     client.setConnectionTimeout(1000);
     //client.setTimeout(5000); Se puede asignar aquí o en el constructor
     String credit = client.getCredit();
