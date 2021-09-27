@@ -14,7 +14,6 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
   //configurable parameters
   public String login = "user@mydomain.com";
   public String password = "mypassword";
-  public boolean debug = false;
 
   private static final Logger log = LogManager.getLogger(TestAltiriaSmsJavaClientGetCreditAuth.class);
 
@@ -23,8 +22,7 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
    */
   @Test
   public void testErrorNoLogin() {
-    if (debug)
-      log.debug("Enter testErrorNoLogin");
+    log.debug("Enter testErrorNoLogin");
 
     try {
       AltiriaClient client = new AltiriaClient(null, password);
@@ -42,8 +40,7 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
    */
   @Test
   public void testErrorNoPassword() {
-    if (debug)
-      log.debug("Enter testErrorNoPassword");
+    log.debug("Enter testErrorNoPassword");
 
     try {
       AltiriaClient client = new AltiriaClient(login, null);

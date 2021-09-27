@@ -17,7 +17,6 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
   public String password = "mypassword";
   //set to null if there is no sender
   public String sender = "mySender";
-  public boolean debug = false;
   public String destination = "346XXXXXXXX";
 
   private static final Logger log = LogManager.getLogger(TestAltiriaSmsJavaClientSendSmsAuth.class);
@@ -27,8 +26,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
    */
   @Test
   public void testErrorNoLogin() {
-    if (debug)
-      log.debug("Enter testErrorNoLogin");
+    log.debug("Enter testErrorNoLogin");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -49,8 +47,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
    */
   @Test
   public void testErrorNoPassword() {
-    if (debug)
-      log.debug("Enter testErrorNoPassword");
+    log.debug("Enter testErrorNoPassword");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -71,8 +68,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
    */
   @Test
   public void testErrorNoDestination() {
-    if (debug)
-      log.debug("Enter testErrorNoDestination");
+    log.debug("Enter testErrorNoDestination");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -94,8 +90,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
    */
   @Test
   public void testErrorNoMessage() {
-    if (debug)
-      log.debug("Enter testErrorNoMessage");
+    log.debug("Enter testErrorNoMessage");
 
     try {
       AltiriaClient client = new AltiriaClient(login, null);

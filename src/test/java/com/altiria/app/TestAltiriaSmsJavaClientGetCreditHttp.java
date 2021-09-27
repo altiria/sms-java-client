@@ -14,7 +14,6 @@ public class TestAltiriaSmsJavaClientGetCreditHttp {
   //configurable parameters
   public String login = "user@mydomain.com";
   public String password = "mypassword";
-  public boolean debug = false;
 
   private static final Logger log = LogManager.getLogger(TestAltiriaSmsJavaClientGetCreditHttp.class);
 
@@ -23,8 +22,7 @@ public class TestAltiriaSmsJavaClientGetCreditHttp {
    */
   @Test
   public void testOk() {
-    if (debug)
-      log.debug("Enter testOk");
+    log.debug("Enter testOk");
 
     try {
       AltiriaClient client = new AltiriaClient(login, password);
@@ -43,8 +41,7 @@ public class TestAltiriaSmsJavaClientGetCreditHttp {
    */
   @Test
   public void testErrorInvalidCredentials() {
-    if (debug)
-      log.debug("Enter testErrorInvalidCredentials");
+    log.debug("Enter testErrorInvalidCredentials");
 
     try {
       AltiriaClient client = new AltiriaClient("unknown", password);

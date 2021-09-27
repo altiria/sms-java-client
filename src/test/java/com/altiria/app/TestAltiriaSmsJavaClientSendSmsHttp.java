@@ -26,7 +26,6 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
   public String password = "mypassword";
   //set to null if there is no sender
   public String sender = "mySender";
-  public boolean debug = false;
   public String destination = "346XXXXXXXX";
 
   private static Gson gson = null;
@@ -43,8 +42,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
   @SuppressWarnings("all")
   @Test
   public void testOkMandatoryParams() {
-    if (debug)
-      log.debug("Enter testOkMandatoryParams");
+    log.debug("Enter testOkMandatoryParams");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -74,8 +72,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
   @SuppressWarnings("all")
   @Test
   public void testOkAllParams() {
-    if (debug)
-      log.debug("Enter testOkAllParams");
+    log.debug("Enter testOkAllParams");
 
     try {
       String message = "Lorem Ipsum is simply dummy text of the printing and typesetting industry \u20AC";
@@ -126,8 +123,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
    */
   @Test
   public void testErrorInvalidCredentials() {
-    if (debug)
-      log.debug("Enter testErrorInvalidCredentials");
+    log.debug("Enter testErrorInvalidCredentials");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -149,8 +145,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
    */
   @Test
   public void testErrorInvalidDestination() {
-    if (debug)
-      log.debug("Enter testErrorInvalidDestination");
+    log.debug("Enter testErrorInvalidDestination");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
@@ -173,8 +168,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
    */
   @Test
   public void testErrorEmptyMessage() {
-    if (debug)
-      log.debug("Enter testErrorEmptyMessage");
+    log.debug("Enter testErrorEmptyMessage");
 
     try {
       String message = "";
@@ -196,8 +190,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
    */
   @Test
   public void testErrorInvalidSenderId() {
-    if (debug)
-      log.debug("Enter testErrorInvalidSenderId");
+    log.debug("Enter testErrorInvalidSenderId");
 
     try {
       String message = "Lorem Ipsum is simply dummy text";
