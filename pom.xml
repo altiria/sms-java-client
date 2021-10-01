@@ -13,7 +13,7 @@
 	<url>https://www.altiria.net/</url>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
@@ -30,14 +30,14 @@
 			<version>2.14.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.httpcomponents.client5</groupId>
-			<artifactId>httpclient5</artifactId>
-			<version>5.1</version>
-		</dependency>
-		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-slf4j-impl</artifactId>
 		    <version>2.14.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -59,14 +59,13 @@
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
 					<configuration>
-						<encoding>UTF-8</encoding>
+             		    <argLine>-Dfile.encoding=ISO-8859-1</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.0.2</version>
 					<configuration>
-						<encoding>UTF-8</encoding>
 						<resources>
 							<resource>
 								<directory>src/main/resources</directory>
@@ -77,15 +76,11 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
 					<configuration>
-						<encoding>UTF-8</encoding>
 						<systemProperties>
 							<property>
 								<name>log4j.configurationFile</name>
@@ -95,42 +90,28 @@
 						<includes>
                     		<include>**/com.altiria.app.TestAll.java</include>
                 		</includes>
+             		    <argLine>-Dfile.encoding=ISO-8859-1</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>3.0.2</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.2</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>2.8.2</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.7.1</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
