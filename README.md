@@ -38,6 +38,10 @@ En este caso, añadir el siguiente fragmento al fichero composer.json.
 </dependency>
 ```
 
+**Nota**
+
+La codificación del proyecto por defecto es ISO-8859-1. Según el proyecto que integre esta librería puede ser necesario ajustar el archivo pom.xml.
+
 ## Ejemplos de uso
 
 ### Envío de SMS
