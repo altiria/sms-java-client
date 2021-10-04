@@ -1,8 +1,5 @@
 ![](http://static.altiria.com/wp-content/themes/altiria/images/logo-altiria.png)
 
-## ¡Atención! Este proyecto aún se encuentra en desarrollo. Pronto se publicará la versión final para su uso.
-
-
 # Altiria, cliente SMS Java
 
  ![](https://img.shields.io/badge/version-0.9.0-blue.svg)
@@ -24,17 +21,22 @@ Altiria SMS Java es un cliente que simplifica al máximo la integración de nues
 
 ## Instalación
 
-La forma recomendada de instalar el cliente Altiria para Java es a través de maven .
+La forma recomendada de instalar el cliente Altiria para Java es a través de maven.
 
-### Editando el fichero composer.json y actualizando el proyecto
-
-En este caso, añadir el siguiente fragmento al fichero composer.json.
+Para esto, es necesario añadir el objeto **repositories** como hijo del elemento **project** y el objeto **dependency** como hijo del elemento **dependencies**.
 
 ```xml
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
 <dependency>
-	<groupId>org.altiria.sms.api</groupId>
-	<artifactId>sms-api</artifactId>
-	<version>1.0</version>
+    <groupId>com.github.altiria</groupId>
+    <artifactId>sms-java-client</artifactId>
+    <version>1.0</version>
 </dependency>
 ```
 
