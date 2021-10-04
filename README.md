@@ -54,7 +54,7 @@ Se trata de la opción más sencilla para realizar un envío de SMS.
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("¡Mensaje enviado!");
 } catch (AltiriaGwException ae) {
@@ -79,7 +79,7 @@ Por defecto el tiempo de respuesta es de 10 segundos, pero puede ser ajustado en
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña", 5000);
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("Mensaje enviado");
 } catch (AltiriaGwException ae) {
@@ -103,7 +103,7 @@ Se trata de la opción más sencilla para realizar un envío de SMS añadiendo r
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.sendSms("346XXXXXXXX", "Mensaje de prueba", "miRemitente");
     System.out.println("¡Mensaje enviado!");
 } catch (AltiriaGwException ae) {
@@ -126,7 +126,7 @@ Se muestra un ejemplo utilizando todo los parámetros mediante setters.
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.setConnectionTimeout(1000);
     client.setTimeout(5000);
     AltiriaModelTextMessage textMessage = new AltiriaModelTextMessage("346XXXXXXXX", "Mensaje de prueba");
@@ -162,7 +162,7 @@ Este ejemplo no incluye los parámetros opcionales.
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     String credit = client.getCredit();
     System.out.println("Crédito disponible: "+credit);
 } catch (AltiriaGwException ae) {
@@ -187,7 +187,7 @@ Este ejemplo incluye los parámetros opcionales.
 
 ```java
 try {
-    AltiriaClient client = new AltiriaClient("miusuario@email.com", "contraseña", 5000);
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
     client.setConnectionTimeout(1000);
     //client.setTimeout(5000); Se puede asignar aquí o en el constructor
     String credit = client.getCredit();
