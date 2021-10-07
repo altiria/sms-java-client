@@ -1,18 +1,24 @@
 ![](http://static.altiria.com/wp-content/themes/altiria/images/logo-altiria.png)
 
-# Altiria, cliente SMS Java
+# Altiria, cliente envío de SMS con Java
 
  ![](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
-Altiria SMS Java es un cliente que simplifica al máximo la integración de nuestro API para Java utilizando el gestor de dependencias **maven**. Por el momento, esta librería abarca las funciones más básicas:
+Altiria SMS Java es  el cliente de envío de SMS que simplifica al máximo la integración del API SMS con Java de Altiria utilizando el gestor de dependencias **maven**. 
 - **Envíos de SMS individuales** con las siguientes características:
   - sencillos
   - concatenados
-  - certificación de entrega con o sin identificador
-  - certificado digital de entrega
-  - uso de remitente
-  - seleccionar codificación
+  - confirmación de entrega
+  - remitente personalizado
 - **Consultas de crédito**
+
+## Uso
+
+Es necesario tener una cuenta de envío con Altiria. Si todavía no tienes una,
+
+[Regístrate para crear una cuenta de prueba](https://www.altiria.com/free-trial/)
+
+[Documentación de la API](https://www.altiria.com/api-envio-sms/)
 
 ## Requisitos
 
@@ -23,7 +29,7 @@ Altiria SMS Java es un cliente que simplifica al máximo la integración de nues
 
 La forma recomendada de instalar el cliente Altiria para Java es a través de maven.
 
-Para esto, es necesario añadir el objeto **repositories** como hijo del elemento **project** y el objeto **dependency** como hijo del elemento **dependencies**.
+Es necesario añadir el objeto **repositories** como hijo del elemento **project** y el objeto **dependency** como hijo del elemento **dependencies**.
 
 ```xml
 <repositories>
@@ -56,19 +62,13 @@ Se trata de la opción más sencilla para realizar un envío de SMS.
 
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("¡Mensaje enviado!");
 } catch (AltiriaGwException ae) {
 	System.out.println("Mensaje no aceptado: "+ae.getMessage());
 	System.out.println("Código de error: "+ae.getStatus());
-} catch (JsonException je) {
-	System.out.println("Error en la petición: "+je.getMessage());
-} catch (ConnectException ce) {
-	if(ce.getMessage().contains("RESPONSE_TIMEOUT"))
-		System.out.println("Tiempo de respuesta agotado: "+ce.getMessage());
-	else
-		System.out.println("Tiempo de conexión agotado: "+ce.getMessage());
 } catch (Exception e) {
 	System.out.println("Error inesperado: "+e.getMessage());
 }
@@ -81,6 +81,7 @@ Por defecto el tiempo de respuesta es de 10 segundos, pero puede ser ajustado en
 
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("Mensaje enviado");
@@ -105,6 +106,7 @@ Se trata de la opción más sencilla para realizar un envío de SMS añadiendo r
 
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.sendSms("346XXXXXXXX", "Mensaje de prueba", "miRemitente");
     System.out.println("¡Mensaje enviado!");
@@ -128,6 +130,7 @@ Se muestra un ejemplo utilizando todo los parámetros mediante setters.
 
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     client.setConnectionTimeout(1000);
     client.setTimeout(5000);
@@ -156,14 +159,13 @@ try {
 ```
 ### Consulta de crédito
 
-A continuación se describen cada una de las posibilidades de uso de la librería para consultar el crédito.
+Ejemplos de consulta del crédito de SMS en la cuenta de Altiria.
 
 #### Ejemplo básico
 
-Este ejemplo no incluye los parámetros opcionales.
-
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
     String credit = client.getCredit();
     System.out.println("Crédito disponible: "+credit);
@@ -183,12 +185,11 @@ try {
 
 ```
 
-#### Ejemplo con todos los parámetros
-
-Este ejemplo incluye los parámetros opcionales.
+#### Ejemplo con timeout
 
 ```java
 try {
+    //Personaliza las credenciales de acceso
     AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
     client.setConnectionTimeout(1000);
     //client.setTimeout(5000); Se puede asignar aquí o en el constructor
