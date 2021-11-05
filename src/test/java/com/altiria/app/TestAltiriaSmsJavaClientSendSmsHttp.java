@@ -185,26 +185,4 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
     }
   }
 
-  /**
-   * The senderId parameter is invalid.
-   */
-  @Test
-  public void testErrorInvalidSenderId() {
-    log.debug("Enter testErrorInvalidSenderId");
-
-    try {
-      String message = "Lorem Ipsum is simply dummy text";
-      String sender = "unknown";
-
-      AltiriaClient client = new AltiriaClient(login, password);
-      client.sendSms(destination, message, sender);
-      fail("AltiriaGwException should have been thrown");
-
-    } catch (AltiriaGwException ae) {
-      assertEquals("INVALID_SENDER", ae.getMessage());
-      assertEquals("022", ae.getStatus());
-    } catch (Exception e) {
-      fail("Error: " + e.getMessage());
-    }
-  }
 }
