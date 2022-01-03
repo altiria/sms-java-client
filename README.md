@@ -2,7 +2,7 @@
 
 # Altiria, cliente envío de SMS con Java
 
- ![](https://img.shields.io/badge/version-1.0.0-blue.svg)
+ ![](https://img.shields.io/badge/version-1.0.1-blue.svg)
 
 Altiria SMS Java es  el cliente de envío de SMS que simplifica al máximo la integración del API SMS con Java de Altiria utilizando el gestor de dependencias **maven**. 
 - **Envíos de SMS individuales** con las siguientes características:
