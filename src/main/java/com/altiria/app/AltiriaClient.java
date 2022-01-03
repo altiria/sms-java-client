@@ -355,14 +355,6 @@ public class AltiriaClient {
       errorMessage = "TOO_MANY_MESSAGES";
     } else if (status.equals("020")) {
       errorMessage = "AUTHENTICATION_ERROR";
-    } else if (status.equals("022")) {
-      errorMessage = "INVALID_SENDER";
-    } else if (status.equals("030")) {
-      errorMessage = "URL_AND_MESSAGE_ARE_TOO_LONG";
-    } else if (status.equals("031")) {
-      errorMessage = "INVALID_URL_LENGTH";
-    } else if (status.equals("032")) {
-      errorMessage = "INVALID_URL_CHARS";
     } else if (status.equals("033")) {
       errorMessage = "INVALID_DESTINATION_SMS_PORT";
     } else if (status.equals("034")) {
