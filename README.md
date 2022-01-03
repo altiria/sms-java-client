@@ -42,7 +42,7 @@ Es necesario añadir el objeto **repositories** como hijo del elemento **project
 <dependency>
     <groupId>com.github.altiria</groupId>
     <artifactId>sms-java-client</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
