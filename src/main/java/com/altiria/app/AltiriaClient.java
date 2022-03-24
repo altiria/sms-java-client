@@ -35,6 +35,7 @@ public class AltiriaClient {
   private Gson gson;
   private String login;
   private String passwd;
+  private boolean isApiKey;
 
   // connection timeout values are defined here
   private int connectionTimeout = 3000;
@@ -57,10 +58,12 @@ public class AltiriaClient {
    * Simple constructor
    * @param login user login
    * @param password user password
+   * @param isApiKey set to true if apikey is used
    */
-  public AltiriaClient(String login, String password) {
+  public AltiriaClient(String login, String password, boolean isApiKey) {
     this.login = login;
     this.passwd = password;
+    this.isApiKey = isApiKey;
     gson = new GsonBuilder().create();
   }
 
@@ -68,15 +71,17 @@ public class AltiriaClient {
    * This constructor includes response timeout.
    * @param login user login
    * @param password user password
+   * @param isApiKey set to true if apikey is used
    * @param timeout milliseconds for response timeout
    */
-  public AltiriaClient(String login, String password, int timeout) {
+  public AltiriaClient(String login, String password, boolean isApiKey, int timeout) {
     this.login = login;
     this.passwd = password;
+    this.isApiKey = isApiKey;
     this.setTimeout(timeout);
     gson = new GsonBuilder().create();
   }
-
+  
   /**
    * Set the response timeout.
    * @param connectionTimeout milliseconds for connection timeout
@@ -139,6 +144,15 @@ public class AltiriaClient {
       JsonObject credentialsJsonObject = new JsonObject();
       JsonObject messageJsonObject = new JsonObject();
       JsonArray destinationsJsonArray = null;
+      
+      if (this.login == null) {
+    	log.error("ERROR: The login parameter is mandatory");
+        throw new JsonException("LOGIN_NOT_NULL");
+      }
+      if (this.passwd == null) {
+    	log.error("ERROR: The password parameter is mandatory");
+        throw new JsonException("PASSWORD_NOT_NULL");
+      }
 
       if (textMessage.getDestination() == null || textMessage.getDestination().trim().isEmpty()) {
         log.error("ERROR: The destination parameter is mandatory");
@@ -172,8 +186,8 @@ public class AltiriaClient {
       if (textMessage.getEncoding() != null && textMessage.getEncoding().equals("unicode"))
         messageJsonObject.addProperty("encoding", "unicode");
 
-      credentialsJsonObject.addProperty("login", this.login);
-      credentialsJsonObject.addProperty("passwd", this.passwd);
+      credentialsJsonObject.addProperty(this.isApiKey?"apikey":"login", this.login);
+      credentialsJsonObject.addProperty(this.isApiKey?"apisecret":"passwd", this.passwd);
 
       jsonObject.add("credentials", credentialsJsonObject);
       jsonObject.add("destination", destinationsJsonArray);
@@ -254,11 +268,20 @@ public class AltiriaClient {
 
     String credit = null;
     try {
+	  if (this.login == null) {
+		log.error("ERROR: The login parameter is mandatory");
+		throw new JsonException("LOGIN_NOT_NULL");
+	  }
+	  if (this.passwd == null) {
+	    log.error("ERROR: The password parameter is mandatory");
+	    throw new JsonException("PASSWORD_NOT_NULL");
+	  }	
+    	
       JsonObject jsonObject = new JsonObject();
 
       JsonObject credentialsJsonObject = new JsonObject();
-      credentialsJsonObject.addProperty("login", this.login);
-      credentialsJsonObject.addProperty("passwd", this.passwd);
+      credentialsJsonObject.addProperty(this.isApiKey?"apikey":"login", this.login);
+      credentialsJsonObject.addProperty(this.isApiKey?"apisecret":"passwd", this.passwd);
 
       jsonObject.add("credentials", credentialsJsonObject);
       jsonObject.addProperty("source", source);

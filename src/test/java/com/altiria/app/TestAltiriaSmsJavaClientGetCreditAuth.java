@@ -25,7 +25,7 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
     log.debug("Enter testErrorNoLogin");
 
     try {
-      AltiriaClient client = new AltiriaClient(null, password);
+      AltiriaClient client = new AltiriaClient(null, password, false);
       client.getCredit();
       fail("JsonException should have been thrown");
     } catch (JsonException je) {
@@ -43,7 +43,7 @@ public class TestAltiriaSmsJavaClientGetCreditAuth {
     log.debug("Enter testErrorNoPassword");
 
     try {
-      AltiriaClient client = new AltiriaClient(login, null);
+      AltiriaClient client = new AltiriaClient(login, null, false);
       client.getCredit();
       fail("JsonException should have been thrown");
     } catch (JsonException je) {

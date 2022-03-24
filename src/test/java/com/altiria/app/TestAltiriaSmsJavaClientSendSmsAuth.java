@@ -31,7 +31,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
     try {
       String message = "Lorem Ipsum is simply dummy text";
 
-      AltiriaClient client = new AltiriaClient(null, password);
+      AltiriaClient client = new AltiriaClient(null, password, false);
       client.sendSms(destination, message);
       fail("JsonException should have been thrown");
 
@@ -52,7 +52,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
     try {
       String message = "Lorem Ipsum is simply dummy text";
 
-      AltiriaClient client = new AltiriaClient(login, null);
+      AltiriaClient client = new AltiriaClient(login, null, false);
       client.sendSms(destination, message);
       fail("JsonException should have been thrown");
 
@@ -73,7 +73,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
     try {
       String message = "Lorem Ipsum is simply dummy text";
 
-      AltiriaClient client = new AltiriaClient(login, null);
+      AltiriaClient client = new AltiriaClient(login, password, false);
       client.sendSms(null, message);
       fail("AltiriaGwException should have been thrown");
 
@@ -93,7 +93,7 @@ public class TestAltiriaSmsJavaClientSendSmsAuth {
     log.debug("Enter testErrorNoMessage");
 
     try {
-      AltiriaClient client = new AltiriaClient(login, null);
+      AltiriaClient client = new AltiriaClient(login, password, false);
       client.sendSms(destination, null);
       fail("AltiriaGwException should have been thrown");
 

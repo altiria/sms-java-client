@@ -24,6 +24,8 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
   //configurable parameters
   public String login = "user@mydomain.com";
   public String password = "mypassword";
+  public String apiKey = "XXXXXXXX";
+  public String apiSecret = "YYYYYYYY";
   //set to null if there is no sender
   public String sender = "mySender";
   public String destination = "346XXXXXXXX";
@@ -47,7 +49,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
     try {
       String message = "Lorem Ipsum is simply dummy text";
 
-      AltiriaClient client = new AltiriaClient(login, password);
+      AltiriaClient client = new AltiriaClient(login, password, false);
       String json = client.sendSms(destination, message);
 
       LinkedTreeMap < String, Object > mapBody = gson.fromJson(json, new TypeToken < LinkedTreeMap < String, Object >> () {}.getType());
@@ -63,6 +65,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
   /**
    * All params are sent.
    * Features:
+   * - apikey authentication
    * - sender
    * - delivery confirmation with identifier
    * - concatenated
@@ -79,7 +82,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
       String idAck = "myAlias";
       String encoding = "unicode";
 
-      AltiriaClient client = new AltiriaClient(login, password);
+      AltiriaClient client = new AltiriaClient(apiKey, apiSecret, true);
 
       AltiriaModelTextMessage textMessage = new AltiriaModelTextMessage(destination, message, sender);
 
@@ -128,7 +131,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
     try {
       String message = "Lorem Ipsum is simply dummy text";
 
-      AltiriaClient client = new AltiriaClient("unknown", password);
+      AltiriaClient client = new AltiriaClient("unknown", password, false);
       client.sendSms(destination, message);
       fail("AltiriaGwException should have been thrown");
 
@@ -151,7 +154,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
       String message = "Lorem Ipsum is simply dummy text";
       String invalidDestination = "invalid";
 
-      AltiriaClient client = new AltiriaClient(login, password);
+      AltiriaClient client = new AltiriaClient(login, password, false);
       client.sendSms(invalidDestination, message);
       fail("AltiriaGwException should have been thrown");
 
@@ -173,7 +176,7 @@ public class TestAltiriaSmsJavaClientSendSmsHttp {
     try {
       String message = "";
 
-      AltiriaClient client = new AltiriaClient(login, password);
+      AltiriaClient client = new AltiriaClient(login, password, false);
       client.sendSms(destination, message);
       fail("AltiriaGwException should have been thrown");
 
