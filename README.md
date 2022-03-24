@@ -2,7 +2,7 @@
 
 # Altiria, cliente envío de SMS con Java
 
- ![](https://img.shields.io/badge/version-1.0.1-blue.svg)
+ ![](https://img.shields.io/badge/version-1.0.2-blue.svg)
 
 Altiria SMS Java es  el cliente de envío de SMS que simplifica al máximo la integración del API SMS con Java de Altiria utilizando el gestor de dependencias **maven**. 
 - **Envíos de SMS individuales** con las siguientes características:
@@ -42,7 +42,7 @@ Es necesario añadir el objeto **repositories** como hijo del elemento **project
 <dependency>
     <groupId>com.github.altiria</groupId>
     <artifactId>sms-java-client</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -63,7 +63,7 @@ Se trata de la opción más sencilla para realizar un envío de SMS.
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", false);
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("¡Mensaje enviado!");
 } catch (AltiriaGwException ae) {
@@ -82,7 +82,7 @@ Por defecto el tiempo de respuesta es de 10 segundos, pero puede ser ajustado en
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", false, 5000);
     client.sendSms("346XXXXXXXX", "Mensaje de prueba");
     System.out.println("Mensaje enviado");
 } catch (AltiriaGwException ae) {
@@ -103,11 +103,12 @@ try {
 #### Ejemplo básico con remitente
 
 Se trata de la opción más sencilla para realizar un envío de SMS añadiendo remitente.
+En este caso, se ilustra cómo realizar una autentificación mediante APIKEY, donde "XXXXXXXXXX" es el parámetro "apiKey" y "YYYYYYYYYY" el parámetro "apiSecret".
 
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
+    AltiriaClient client = new AltiriaClient("XXXXXXXXXX", "YYYYYYYYYY", true);
     client.sendSms("346XXXXXXXX", "Mensaje de prueba", "miRemitente");
     System.out.println("¡Mensaje enviado!");
 } catch (AltiriaGwException ae) {
@@ -131,7 +132,7 @@ Se muestra un ejemplo utilizando todo los parámetros mediante setters.
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", false);
     client.setConnectionTimeout(1000);
     client.setTimeout(5000);
     AltiriaModelTextMessage textMessage = new AltiriaModelTextMessage("346XXXXXXXX", "Mensaje de prueba");
@@ -166,7 +167,7 @@ Ejemplos de consulta del crédito de SMS en la cuenta de Altiria.
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword");
+    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", false);
     String credit = client.getCredit();
     System.out.println("Crédito disponible: "+credit);
 } catch (AltiriaGwException ae) {
@@ -186,11 +187,13 @@ try {
 ```
 
 #### Ejemplo con timeout
+En este caso, se ilustra cómo realizar una autentificación mediante APIKEY, donde "XXXXXXXXXX" es el parámetro "apiKey" y "YYYYYYYYYY" el parámetro "apiSecret".
+
 
 ```java
 try {
     //Personaliza las credenciales de acceso
-    AltiriaClient client = new AltiriaClient("user@mydomain.com", "mypassword", 5000);
+    AltiriaClient client = new AltiriaClient("XXXXXXXXXX", "YYYYYYYYYY", true, 5000);
     client.setConnectionTimeout(1000);
     //client.setTimeout(5000); Se puede asignar aquí o en el constructor
     String credit = client.getCredit();
